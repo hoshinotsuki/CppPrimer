@@ -14,7 +14,4 @@ cppp-把书读薄 。学习笔记。
 
 - 声明指定符 decl-specifier-seq 
 
-  - 内联 inline https://github.com/hoshinotsuki/CppPrimer/blob/master/Inline.md
-
-    
-
+  - [内联 inline](https://github.com/hoshinotsuki/CppPrimer/blob/master/Inline.md) 
