@@ -15,3 +15,10 @@
 - 声明指定符 decl-specifier-seq 
 
   - 内联 inline | [笔记](https://github.com/hoshinotsuki/CppPrimer/blob/master/Inline.md) | [png](https://github.com/hoshinotsuki/CppPrimer/blob/master/Inline.png)
+
+  - 类型指定符 type-specifier-seq
+
+    - cv限定符
+
+        -const | [笔记]()|[png]()
+
