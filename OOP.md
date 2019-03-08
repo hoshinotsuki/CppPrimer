@@ -20,7 +20,6 @@ struct Derived2 : Derived {
 };
 ```
 
-![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
 
 - 从内存的角度：派生类继承了基类的成员变量（data)。
 - 从多态的角度：可以重写基类的成员函数。函数的继承是继承父类的调用权。
@@ -65,7 +64,6 @@ int main()
 }
 ```
 
-![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
 
 > 【重要！】**任何基类的析构函数必须为公开且虚public virtual，或protected受保护且非虚 。**
 >
@@ -76,7 +74,7 @@ int main()
 ## 2.1 派生类
 
 - 派生类必须用 ：指定父类。 用逗号分开。基类前面可以加三种访问说明符之一。
-- ![img](https://img-blog.csdnimg.cn/20190225132155293.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTA0MjQwNA==,size_16,color_FFFFFF,t_70)![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
+- ![img](https://img-blog.csdnimg.cn/20190225132155293.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTA0MjQwNA==,size_16,color_FFFFFF,t_70)
 - 若省略访问说明符 ，则它对以类关键 `struct` 声明的类默认为 `public` ，对以类关键 `class` 声明的类为 `private` 。
 - 列于 base-clause 的类是直接基类，其基类是间接基类。
 - 同一类不能指定于直接基类多于一次，但同一类可以既是直接又是间接基类。
@@ -115,7 +113,6 @@ int main()
 }
 ```
 
-![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
 
 若空基类之一亦为首个非静态数据成员的类型或其类型的基类，则禁用空基优化，因为要求同类型二个基类子对象在最终派生类的对象表示中拥有不同地址。
 
@@ -152,7 +149,6 @@ int main()
 }
 ```
 
-![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
 
 > C++11：对于[标准布局类型](https://zh.cppreference.com/w/cpp/named_req/StandardLayoutType) (StandardLayoutType) *要求*有空基类优化，以维持指向标准布局对象的指针，用 [reinterpret_cast](https://zh.cppreference.com/w/cpp/language/reinterpret_cast) 转换后，还指向其首成员，这是标准布局类型“无拥有非静态数据成员的基类，且无与其首个非静态数据成员同类型的基类”的原因。
 
@@ -181,8 +177,6 @@ struct AA : X, Y, Z {
     }
 };
 ```
-
-![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
 
 ------
 
@@ -227,7 +221,6 @@ AA a; // a.n == 3
 X x; // x.n == 1
 ```
 
-![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
 
 涉及虚继承时，类成员的非限定名称查找有特殊规则（有时被引用为支配规则），见 [unqualified_lookup#成员函数定义](https://zh.cppreference.com/w/cpp/language/unqualified_lookup#.E6.88.90.E5.91.98.E5.87.BD.E6.95.B0.E5.AE.9A.E4.B9.89)。 
 
@@ -235,7 +228,7 @@ X x; // x.n == 1
 
 ## 2.4 继承方式
 
-![img](https://img-blog.csdnimg.cn/20190226204828970.png)![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
+![img](https://img-blog.csdnimg.cn/20190226204828970.png)
 
 **公开继承 public**
 
@@ -279,7 +272,6 @@ service<tcp> service(host, port);
 service.transmit(...); // 发送完毕 TCP
 ```
 
-![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
 
 ------
 
@@ -317,7 +309,6 @@ struct B : A
 };
 ```
 
-![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
 
 ### **final**
 
@@ -347,7 +338,6 @@ struct C : B // 错误： B 为 final
 };
 ```
 
-![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
 
 ------
 
@@ -361,14 +351,14 @@ C++ OOP的关键：基类和派生类之间的类型转换。
 
 ## 3.1 对象模型：虚表和虚指针
 
-![img](https://img-blog.csdnimg.cn/20190227212939321.png)![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
+![img](https://img-blog.csdnimg.cn/20190227212939321.png)
 
 -  函数也占内存，也有地址。虚函数才有虚指针，虚函数表（里面都是指向函数的指针。
 -  c调用： 静态绑定 call+地址。c++调用：动态绑定。指向C的指针p想调用虚函数v1（动态绑定）通过指针找到vptr虚指针，找到vtbl虚函数表，得到要调用的函数地址。
 -  p->vptr[n]是c语言的描述，n是虚函数在vtbl中的第几个位置。编译器在编译的时候看vfun是第几个出现的，就确定了n的值。 
 - 类的内存：父类数据+自己数据+1个或0个虚指针。
 
-![img](https://img-blog.csdnimg.cn/20190227221129621.png)![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
+![img](https://img-blog.csdnimg.cn/20190227221129621.png)
 
 - 容器里装的一定是一个指向父类的指针。list<A*>，因为没法确定形状的大小所以是指针，而且必须得是父类。
 - 只有虚函数才能被override（c++)。不用像c那样去判断类型。因为父类可能加新的子类。
@@ -388,13 +378,13 @@ C++ OOP的关键：基类和派生类之间的类型转换。
 - 静态类型在编译时就被确定了。它是【变量声明时的类型】 或【表达式生成的类型】。
 - 动态类型在运行时才知道。它是【变量或表达式代表的内存中的对象的类型】。
 
-![img](https://img-blog.csdnimg.cn/2019022722375534.png)![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
+![img](https://img-blog.csdnimg.cn/2019022722375534.png)
 
 ------
 
 ## 3.4 关于this 
 
-![img](https://img-blog.csdnimg.cn/20190227222758213.png)![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
+![img](https://img-blog.csdnimg.cn/20190227222758213.png)
 
 -  this是个指针。也可以说this指的那个object。
 - main(){derivedclass object;object.func();}相当于调用baseclass::func(&object);&object就是this，通常不写。
@@ -457,8 +447,6 @@ int main()
 }
 ```
 
-![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
-
 ------
 
 ## 4.3 覆写（重要）
@@ -492,8 +480,6 @@ int main()
 }
 ```
 
-![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
-
 对于每个虚函数，存在*最终覆写者*，它在虚函数调用进行时执行。基类 `Base` 虚成员函数 `vf` 是最终覆写者，除非派生类声明或继承（通过多重继承）另一覆写 `vf` 的函数。
 
 ```cpp
@@ -510,8 +496,6 @@ int main() {
    e.E::f(); // 非虚调用调用 A::f ，它在 E 中可见
 }
 ```
-
-![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
 
 虚函数只能有一个最终覆写者：
 
@@ -536,8 +520,6 @@ struct Da : VB1a, VB2 {
     // Da 中， A::f 的最终覆写者是 VB2::f
 };
 ```
-
-![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
 
 拥有同名和相异参数列表的函数不覆写同名的基类函数，但*隐藏*它：在[非限定名称查找](https://zh.cppreference.com/w/cpp/language/lookup)检验派生类的作用域时，查找找到该声明，且不检验基类。
 
@@ -566,8 +548,6 @@ int main()
     d2_as_d.f(); // 错误： D 中的查找只找到 f(int)
 }
 ```
-
-![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
 
 非成员函数和静态成员函数不能为虚。
 
@@ -630,8 +610,6 @@ int main()
 }
 ```
 
-![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
-
 ------
 
 ## 4.5 在构造与析构期间
@@ -683,8 +661,6 @@ B::B(V* v, A* a)
 }
 ```
 
-![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
-
 ------
 
 # 5. 抽象类 与 纯虚类
@@ -710,8 +686,6 @@ struct A : Base{
     virtual int b()=0 {}
 };
 ```
-
-![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
 
 abstract class 是定义或继承了至少一个[最终覆写](https://zh.cppreference.com/w/cpp/language/virtual)为 pure virtual 的函数的类。
 
@@ -745,8 +719,6 @@ int main()
 }
 ```
 
-![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
-
 可以提供纯虚函数的定义（而且若[析构函数](https://zh.cppreference.com/w/cpp/language/destructor)为纯虚则必须提供）：导出类的成员函数可以自由地用有限定函数 id 调用虚基类的纯虚函数。此定义必须在类体外（函数声明的语法不允许纯虚指定符 `**= 0**` 和函数体一起出现）。
 
 从抽象类的构造函数或析构函数进行纯虚函数的虚调用是未定义行为（无论纯虚函数是否拥有定义）。
@@ -776,7 +748,5 @@ struct Concrete : Abstract {
     }
 };
 ```
-
-![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
 
  
