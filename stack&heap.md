@@ -12,7 +12,7 @@ stack是在某个作用域内的一块内存空间。当调用函数时，函数
 堆是操作系统提供的全局global内存空间。程序动态分配dynamic allocated时，从堆里面取一些区块blocks。
 
 
-## 3.stack和heap的内存例子 / static 对象
+## 3.stack和heap的内存例子 / 类外的static声明
 
 ```cpp
 class Complex { … };
@@ -38,7 +38,7 @@ Complex c3(1,2);//global/static
     - global object。c3。main调用之前被构造初始化。在程序结束之后自动析构。
     - 定义于namespace作用域的对象。main调用之前被构造初始化。在程序结束之后自动析构。
 
-# Static对象 
+# 类外的static声明 
 
 ## 1. 两个编译单元中的non-local static object相互引用
 
