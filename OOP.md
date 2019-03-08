@@ -1,10 +1,8 @@
-# 1.概述
+# 1. 概述
 
 ![img](https://img-blog.csdnimg.cn/20190226010103645.png)
 
-------
-
-# 2.继承
+# 2. 继承
 
 ```cpp
 struct Base {
@@ -19,26 +17,22 @@ struct Derived2 : Derived {
     int c;
 };
 ```
-
-
+ 
 - 从内存的角度：派生类继承了基类的成员变量（data)。
 - 从多态的角度：可以重写基类的成员函数。函数的继承是继承父类的调用权。
-
-------
+ 
 
 ## 2.0 基类
 
+### **基类的成员函数定义**
+
 **基类必须已经定义，才能派生。**
-
-**基类的成员函数定义**
-
 - non-virtual fun 非虚函数：不希望派生类重写。
 - virtual fun 虚函数 ：希望派生类重写。
 - pure virtual fun 纯虚函数 ： 派生类必须重写。
+ 
 
-------
-
-**虚析构函数**
+### **虚析构函数**
 
 虽然析构函数是不继承的，若基类声明器其析构函数为 `virtual` ，则派生的析构函数始终覆写它。
 
@@ -64,12 +58,9 @@ int main()
 }
 ```
 
+【重要！】**任何基类的析构函数必须为公开且虚public virtual，或protected受保护且非虚 。**
+若类为*多态*（声明或继承至少一个虚函数），且其析构函数非虚，会导致资源泄漏。因为派生类的资源未释放。
 
-> 【重要！】**任何基类的析构函数必须为公开且虚public virtual，或protected受保护且非虚 。**
->
-> 若类为*多态*（声明或继承至少一个虚函数），且其析构函数非虚，会导致资源泄漏。因为派生类的资源未释放。
-
-------
 
 ## 2.1 派生类
 
@@ -84,7 +75,7 @@ int main()
 - **派生类声明中。不能包含基类列表。**
 - 派生类可以隐式转换为基类。
 
-------
+
 
 ## 2.2 [空基类优化](https://zh.cppreference.com/w/cpp/language/ebo)（本节不理解
 
@@ -112,7 +103,6 @@ int main()
     assert(sizeof(Derived1) == sizeof(int));
 }
 ```
-
 
 若空基类之一亦为首个非静态数据成员的类型或其类型的基类，则禁用空基优化，因为要求同类型二个基类子对象在最终派生类的对象表示中拥有不同地址。
 
@@ -149,10 +139,9 @@ int main()
 }
 ```
 
+【C++11】：对于[标准布局类型](https://zh.cppreference.com/w/cpp/named_req/StandardLayoutType) (StandardLayoutType) *要求*有空基类优化，以维持指向标准布局对象的指针，用 [reinterpret_cast](https://zh.cppreference.com/w/cpp/language/reinterpret_cast) 转换后，还指向其首成员，这是标准布局类型“无拥有非静态数据成员的基类，且无与其首个非静态数据成员同类型的基类”的原因。
 
-> C++11：对于[标准布局类型](https://zh.cppreference.com/w/cpp/named_req/StandardLayoutType) (StandardLayoutType) *要求*有空基类优化，以维持指向标准布局对象的指针，用 [reinterpret_cast](https://zh.cppreference.com/w/cpp/language/reinterpret_cast) 转换后，还指向其首成员，这是标准布局类型“无拥有非静态数据成员的基类，且无与其首个非静态数据成员同类型的基类”的原因。
 
-------
 
 ## 2.3 虚基类
 
@@ -178,9 +167,9 @@ struct AA : X, Y, Z {
 };
 ```
 
-------
 
-【例子： iostream 】
+
+### **iostream**
 
 继承层级有虚基类的例子之一是标准库的 iostream 的继承层级：
 
@@ -192,7 +181,7 @@ struct AA : X, Y, Z {
 
 故每个 [std::iostream](https://zh.cppreference.com/w/cpp/io/basic_iostream) 实例含一个 [std::ostream](https://zh.cppreference.com/w/cpp/io/basic_ostream) 子对象、一个 [std::istream](https://zh.cppreference.com/w/cpp/io/basic_istream) 子对象和仅一个 [std::ios](https://zh.cppreference.com/w/cpp/io/basic_ios) 子对象（继而有一个 [std::ios_base](https://zh.cppreference.com/w/cpp/io/ios_base) ）。
 
-------
+
 
 **（这里不理解）**
 
@@ -224,25 +213,24 @@ X x; // x.n == 1
 
 涉及虚继承时，类成员的非限定名称查找有特殊规则（有时被引用为支配规则），见 [unqualified_lookup#成员函数定义](https://zh.cppreference.com/w/cpp/language/unqualified_lookup#.E6.88.90.E5.91.98.E5.87.BD.E6.95.B0.E5.AE.9A.E4.B9.89)。 
 
-------
 
 ## 2.4 继承方式
 
 ![img](https://img-blog.csdnimg.cn/20190226204828970.png)
 
-**公开继承 public**
+### **公开继承 public**
 
 公开继承模拟面向对象编程的子类型关系：派生类对象是（ IS-A ）基类子对象。期待派生类对象的引用和指针，可为使用期待到其任何基类的引用和指针的代码所用（见 [LSP](https://en.wikipedia.org/wiki/Liskov_substitution_principle) ），或者为了 [DbC](https://en.wikipedia.org/wiki/Design_by_contract) ，派生类应该维护其公开基类的类不变量，不应强化任何其所[覆写](https://zh.cppreference.com/w/cpp/language/virtual)的成员函数的前置条件，或弱化任何其后置条件。 
 
-**受保护继承 protected**
+### **受保护继承 protected**
 
 受保护继承可用于“受控制的多态”：在派生类的成员中，还有在所有进一步派生类的成员中，派生类是（ IS-A ）基类：到派生类的引用和指针可用于期待到基类的引用和指针处。
 
-**私有继承 private**
+### **私有继承 private**
 
 私有继承常用于基于策略的设计，因为策略常是空基类，而使用基类可以启用静多态并活用[空基类优化](https://zh.cppreference.com/w/cpp/language/ebo).
 
-------
+
 
 私有继承亦可用于实现合成关系（基类子对象是派生类对象的实现细节）。成员使用提供更好的封装，而且通常受到偏好，除非派生类要求访问基类的受保护成员（包含构造函数）、需要覆写基类的虚成员、需要基类构造先于或析构后于某其他基类子对象，需要共享虚基类或需要控制虚基类的构造。实现合成的成员使用亦不可应用于从[参数包](https://zh.cppreference.com/w/cpp/language/parameter_pack)多重继承的情况，或在编译时通过模板元编程确定基类身份的情况。
 
@@ -273,13 +261,10 @@ service.transmit(...); // 发送完毕 TCP
 ```
 
 
-------
-
 ## 2.5 成员名称查找（不理解）
 
 类成员非限定及限定名称查找的规则详细列于[名称查找](https://zh.cppreference.com/w/cpp/language/lookup)。
 
-------
 
 ## 2.6 C++11新增
 
@@ -339,15 +324,12 @@ struct C : B // 错误： B 为 final
 ```
 
 
-------
-
 # 3. 动态绑定(非常重要）
 
 使用基类的引用或指针，调用一个虚函数，虚函数运行时，形参的版本由实参对象的类型决定。
 
 C++ OOP的关键：基类和派生类之间的类型转换。
 
-------
 
 ## 3.1 对象模型：虚表和虚指针
 
@@ -363,7 +345,6 @@ C++ OOP的关键：基类和派生类之间的类型转换。
 - 容器里装的一定是一个指向父类的指针。list<A*>，因为没法确定形状的大小所以是指针，而且必须得是父类。
 - 只有虚函数才能被override（c++)。不用像c那样去判断类型。因为父类可能加新的子类。
 
-------
 
 ## 3.2 动态绑定的三个条件
 
@@ -371,7 +352,6 @@ C++ OOP的关键：基类和派生类之间的类型转换。
 2. 指针必须向上转型。由子类转向父类。
 3. 调用的是虚函数。 
 
-------
 
 ## 3.3 static type和dynamic type区别
 
@@ -380,8 +360,6 @@ C++ OOP的关键：基类和派生类之间的类型转换。
 
 ![img](https://img-blog.csdnimg.cn/2019022722375534.png)
 
-------
-
 ## 3.4 关于this 
 
 ![img](https://img-blog.csdnimg.cn/20190227222758213.png)
@@ -389,13 +367,10 @@ C++ OOP的关键：基类和派生类之间的类型转换。
 -  this是个指针。也可以说this指的那个object。
 - main(){derivedclass object;object.func();}相当于调用baseclass::func(&object);&object就是this，通常不写。
 
-------
-
 ## 3.5 类型转换
 
 只有在指针和引用之间才有类型转换。在对象之间没有类型转换。
 
-------
 
 # 4. 虚成员、虚函数
 
@@ -403,8 +378,6 @@ C++ OOP的关键：基类和派生类之间的类型转换。
 
 - 基类希望该成员在派生类中重新定义，除了构造函数和静态成员，类中任何成员都可以被virtual声明为虚成员。
 - 该函数在派生类中隐式的也是虚函数。
-
-------
 
 ## 4.2 调用（重要）
 
@@ -446,8 +419,6 @@ int main()
     dr.Base::f(); // 打印 "base"
 }
 ```
-
-------
 
 ## 4.3 覆写（重要）
 
@@ -555,7 +526,6 @@ int main()
 
 在编译时替换虚函数的[默认实参](https://zh.cppreference.com/w/cpp/language/default_arguments)。
 
-------
 
 ## 4.4 协变返回类型
 
@@ -610,8 +580,6 @@ int main()
 }
 ```
 
-------
-
 ## 4.5 在构造与析构期间
 
 - 派生类构造函数。首先初始化基类的部分。再按照声明的顺序依次初始化派生类的成员。
@@ -661,14 +629,11 @@ B::B(V* v, A* a)
 }
 ```
 
-------
-
 # 5. 抽象类 与 纯虚类
 
 定义不能被实例化，但能用作基类的抽象类型。 
 
-------
-
+### **纯虚 (pure virtual) 函数**
 纯虚 (pure virtual) 函数是[声明器](https://zh.cppreference.com/w/cpp/language/function)拥有下列语法的[虚函数](https://zh.cppreference.com/w/cpp/language/virtual)：
 
 此处序列 `**= 0**` 被称作 pure-specifier ，且立即出现于 declarator 后或于可选的 virt-specifier （ [override](https://zh.cppreference.com/w/cpp/language/override) 或 [final](https://zh.cppreference.com/w/cpp/language/final) ）后。
@@ -688,8 +653,6 @@ struct A : Base{
 ```
 
 abstract class 是定义或继承了至少一个[最终覆写](https://zh.cppreference.com/w/cpp/language/virtual)为 pure virtual 的函数的类。
-
-------
 
 抽象类用于表示**通用概念**（例如 Shape 、 Animal ），它可用作具体类（例如 Circle 、 Dog ）的基类。
 
