@@ -1,10 +1,10 @@
-# **1.**[面向对象的标准库 ](https://zh.cppreference.com/w/cpp/io)
+# 1. [面向对象的标准库 ](https://zh.cppreference.com/w/cpp/io)
 
 ![img](https://img-blog.csdnimg.cn/20190224090621729.png)
 
 ------
 
-# **2.**多种IO标准库工具
+# 2. 多种IO标准库工具
 
 - istream，提供输入操作
 - ostream，提供输出操作
@@ -17,13 +17,13 @@
 
 ------
 
-# 3.IO类之间的关系
+# 3. IO类之间的关系
 
 ![img](https://img-blog.csdnimg.cn/20190224140724987.png)
 
 ------
 
-# **4.IO对象不可复制或赋值**
+# 4. IO对象不可复制或赋值
 
 流对象不能存储在vector或其他容器中。
 
@@ -31,7 +31,7 @@
 
 ------
 
-# 5.IO库的条件状态
+# 5. IO库的条件状态
 
 流的状态由bad,fail,eof,good操作揭示。
 
@@ -70,7 +70,7 @@ while(cin >> word)
 
 # 5. 文件IO
 
-## **5.1  标准库头文件fstream **
+## 5.1  标准库头文件\<fstream\>
 
 - ifstream :从文件中读数据
 - ofstream ：从文件中写数据
@@ -116,7 +116,7 @@ int main()
 
 ------
 
-#  6.string流 <sstream>
+#  6. string流 <sstream>
 
  **公开成员函数 std::basic_stringstream::str**
 
