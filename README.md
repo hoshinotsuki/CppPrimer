@@ -39,7 +39,7 @@
 ## 10. 数值库
 
 ## 11. IO库 
-- [笔记](https://github.com/hoshinotsuki/CppPrimer/blob/master/IO.md) 
+- IO库 | 19.2.24 | [笔记](https://github.com/hoshinotsuki/CppPrimer/blob/master/IO.md) 
 
 ## 12. 本地化库
 
