@@ -12,13 +12,13 @@
 ## 1. 语言
 
 ### 声明
-- inline | [笔记](https://github.com/hoshinotsuki/CppPrimer/blob/master/Inline.md) | [png](https://github.com/hoshinotsuki/CppPrimer/blob/master/Inline.png)
-- const | [笔记](https://github.com/hoshinotsuki/CppPrimer/blob/master/const.md) | [png](https://github.com/hoshinotsuki/CppPrimer/blob/master/const.png) 
-- 类外的static声明，生命周期。 | [笔记](https://github.com/hoshinotsuki/CppPrimer/blob/master/stack&heap.md)
+- inline | 19.3.7 | [笔记](https://github.com/hoshinotsuki/CppPrimer/blob/master/Inline.md) | [png](https://github.com/hoshinotsuki/CppPrimer/blob/master/Inline.png)
+- const | 19.3.7 | [笔记](https://github.com/hoshinotsuki/CppPrimer/blob/master/const.md) | [png](https://github.com/hoshinotsuki/CppPrimer/blob/master/const.png) 
+- 类外的static声明，生命周期。| 19.3.8 | [笔记](https://github.com/hoshinotsuki/CppPrimer/blob/master/stack&heap.md)
 ### 类
 - OOP | [笔记](https://github.com/hoshinotsuki/CppPrimer/blob/master/OOP.md)
-- stack/heap内存管理 | [笔记](https://github.com/hoshinotsuki/CppPrimer/blob/master/stack&heap.md)
-- 类定义中的static | [笔记](https://github.com/hoshinotsuki/CppPrimer/blob/master/static.md)
+- stack/heap内存管理 | 19.3.8 | [笔记](https://github.com/hoshinotsuki/CppPrimer/blob/master/stack&heap.md)
+- 类定义中的static | 19.3.8 | [笔记](https://github.com/hoshinotsuki/CppPrimer/blob/master/static.md)
 
 ## 2. 头文件
 
