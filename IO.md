@@ -1,6 +1,6 @@
 # **1.**[面向对象的标准库 ](https://zh.cppreference.com/w/cpp/io)
 
-![img](https://img-blog.csdnimg.cn/20190224090621729.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTA0MjQwNA==,size_16,color_FFFFFF,t_70)![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
+![img](https://img-blog.csdnimg.cn/20190224090621729.png)
 
 ------
 
@@ -19,7 +19,7 @@
 
 # 3.IO类之间的关系
 
-![img](https://img-blog.csdnimg.cn/20190224140724987.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTA0MjQwNA==,size_16,color_FFFFFF,t_70)![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
+![img](https://img-blog.csdnimg.cn/20190224140724987.png)
 
 ------
 
@@ -65,8 +65,6 @@ if(cin)
 while(cin >> word)
 	//ok:read operation successful…
 ```
-
-![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
 
 ------
 
@@ -116,8 +114,6 @@ int main()
 }
 ```
 
-![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
-
 ------
 
 #  6.string流 <sstream>
@@ -153,17 +149,13 @@ int main()
 }
 ```
 
-![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
-
 ```
 after reading the first int from "1 2", the int is 1, str() = "1 2"
 after writing the int '3' to output stream "1 2", str() = "3 2"
 after writing the int '3' to append stream "1 2", str() = "1 23"
 ```
 
-![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
-
-![img](https://img-blog.csdnimg.cn/20190224154744986.png)![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
+![img](https://img-blog.csdnimg.cn/20190224154744986.png)
 
 读取输入流的个人信息
 
@@ -187,8 +179,6 @@ while(getline(cin,line)){
     /* code */
 }
 ```
-
-![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
 
 ------
 

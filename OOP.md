@@ -1,6 +1,6 @@
 # 1.概述
 
-![img](https://img-blog.csdnimg.cn/20190226010103645.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTA0MjQwNA==,size_16,color_FFFFFF,t_70)![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
+![img](https://img-blog.csdnimg.cn/20190226010103645.png)
 
 ------
 
@@ -74,7 +74,7 @@ int main()
 ## 2.1 派生类
 
 - 派生类必须用 ：指定父类。 用逗号分开。基类前面可以加三种访问说明符之一。
-- ![img](https://img-blog.csdnimg.cn/20190225132155293.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTA0MjQwNA==,size_16,color_FFFFFF,t_70)
+- ![img](https://img-blog.csdnimg.cn/20190225132155293.png)
 - 若省略访问说明符 ，则它对以类关键 `struct` 声明的类默认为 `public` ，对以类关键 `class` 声明的类为 `private` 。
 - 列于 base-clause 的类是直接基类，其基类是间接基类。
 - 同一类不能指定于直接基类多于一次，但同一类可以既是直接又是间接基类。
@@ -184,7 +184,7 @@ struct AA : X, Y, Z {
 
 继承层级有虚基类的例子之一是标准库的 iostream 的继承层级：
 
-![img](https://img-blog.csdnimg.cn/20190225164102691.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTA0MjQwNA==,size_16,color_FFFFFF,t_70)![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
+![img](https://img-blog.csdnimg.cn/20190225164102691.png)
 
 [std::istream](https://zh.cppreference.com/w/cpp/io/basic_istream) 与 [std::ostream](https://zh.cppreference.com/w/cpp/io/basic_ostream) 从 **std::ios 使用虚继承派生**。 
 
