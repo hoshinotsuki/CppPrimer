@@ -35,6 +35,42 @@
 		- 时间：Ω(nlogn) 。Θ(nlogn)  。O(n^2) 。
 		- 空间：O(log(n)) 
 
+		```cpp
+		template<class _RanIt,
+			class _Diff,
+			class _Pr> inline
+			void _Sort_unchecked1(_RanIt _First, _RanIt _Last, _Diff _Ideal, _Pr& _Pred)
+			{	// order [_First, _Last), using _Pred
+			_Diff _Count;
+			while (_ISORT_MAX < (_Count = _Last - _First) && 0 < _Ideal)
+				{	// divide and conquer by quicksort
+				pair<_RanIt, _RanIt> _Mid =
+					_Partition_by_median_guess_unchecked(_First, _Last, _Pred);
+				_Ideal /= 2, _Ideal += _Ideal / 2;	// allow 1.5 log2(N) divisions
+
+				if (_Mid.first - _First < _Last - _Mid.second)
+					{	// loop on second half
+					_Sort_unchecked1(_First, _Mid.first, _Ideal, _Pred);
+					_First = _Mid.second;
+					}
+				else
+					{	// loop on first half
+					_Sort_unchecked1(_Mid.second, _Last, _Ideal, _Pred);
+					_Last = _Mid.first;
+					}
+				}
+
+			if (_ISORT_MAX < _Count)
+				{	// heap sort if too many divisions
+				_Make_heap_unchecked(_First, _Last, _Pred);
+				_Sort_heap_unchecked(_First, _Last, _Pred);
+				}
+			else if (2 <= _Count)
+				_Insertion_sort_unchecked(_First, _Last, _Pred);	// small
+			}
+
+		```
+
 - Selection Sorts
 
 	- Selection Sort

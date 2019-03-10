@@ -87,6 +87,8 @@ sizeof f()        // 如果F返回空，则无定义。否则返回返回指的�
 
 
 ## 字符串、向量、数组
+### 字符串
+
 ### 数组
 Q:
 ```CPP
@@ -209,6 +211,60 @@ for(i=0；i<6;i++)
     fscanf( fp,"%d",&a[5-i])；//把文件流指针fp依次指向的内容写入到a[5-i],a[5]=1,a[4]=2,a[3]=3,a[2]=4,a[1]=5,a[0]=6;
 
 ```
+
+Q:
+```CPP
+从控制台输入以","分隔的字符串，要求把字符串存入数组中。
+```
+A:
+```CPP 
+[解]
+#include <iostream>
+#include <sstream>
+#include <vector>
+#include <array>
+ 
+int main()
+{
+	string str;
+	getline(cin, str);
+	istringstream input(str);
+	vector<array<char, 100>> v;
+
+	// 注意：下列循环在从  getline() 返回的流上的 
+	// std::ios_base::operator bool() 返回 false 时终止
+	for (array<char, 100>a; input.getline(&a[0], 100, '，'); ) {
+		v.push_back(a);
+	}
+
+	for (auto& a : v) {
+		std::cout << &a[0] << '\n';
+	}
+
+	return 0;
+}
+
+[扩展]
+basic_istream& getline( char_type* s, std::streamsize count, char_type delim );//从流释出字符到数组，遇到行尾、指定的分隔符 delim、超过数组容量时停止。
+
+int main()
+{
+	string str;
+	getline(cin, str);
+	std::istringstream input(str);
+	std::vector<int> v;
+	char a[100];
+        while(input.getline(&a[0], 100, ','))
+		v.push_back(atoi(a));
+
+	for (auto a : v) {
+		std::cout <<a << '\n';
+	}
+
+	return 0;
+}
+```
+
 
 # 3. 类设计者的工具
 ### 重载 
