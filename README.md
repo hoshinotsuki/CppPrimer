@@ -42,7 +42,7 @@
 
 ## 9. 算法库
 - [Sort](https://github.com/hoshinotsuki/CppPrimer/blob/master/Sort.md) | 19.3.8 |
-
+- [Quicksort](https://github.com/hoshinotsuki/CppPrimer/blob/master/quickSort.md) | 19.3.11 |
 ## 10. 数值库
 
 ## 11. IO库 
