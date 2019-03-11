@@ -30,46 +30,72 @@
 
 	- Quick Sort(Divide and  Conquer)
 
-	  随机选定⼀个元素作为轴值，利⽤该轴值将数组分为左右两部分，左边元素都⽐轴值⼩，右边元素都⽐轴值⼤，但它们不是完全排序的。在此基础上，分别对左右两部分分别递归调⽤quick sort，使得左右部分完全排序。
+	  快排是平均状态下速度最快的一种排序算法。随机选定⼀个元素作为轴值，利⽤该轴值将数组分为左右两部分，左边元素都⽐轴值⼩，右边元素都⽐轴值⼤，但它们不是完全排序的。在此基础上，分别对左右两部分分别递归调⽤quick sort，使得左右部分完全排序。
 
 		- 时间：Ω(nlogn) 。Θ(nlogn)  。O(n^2) 。
 		- 空间：O(log(n)) 
+		- 不稳定 
 
-		```cpp
-		template<class _RanIt,
-			class _Diff,
-			class _Pr> inline
-			void _Sort_unchecked1(_RanIt _First, _RanIt _Last, _Diff _Ideal, _Pr& _Pred)
-			{	// order [_First, _Last), using _Pred
-			_Diff _Count;
-			while (_ISORT_MAX < (_Count = _Last - _First) && 0 < _Ideal)
-				{	// divide and conquer by quicksort
-				pair<_RanIt, _RanIt> _Mid =
-					_Partition_by_median_guess_unchecked(_First, _Last, _Pred);
-				_Ideal /= 2, _Ideal += _Ideal / 2;	// allow 1.5 log2(N) divisions
 
-				if (_Mid.first - _First < _Last - _Mid.second)
-					{	// loop on second half
-					_Sort_unchecked1(_First, _Mid.first, _Ideal, _Pred);
-					_First = _Mid.second;
-					}
-				else
-					{	// loop on first half
-					_Sort_unchecked1(_Mid.second, _Last, _Ideal, _Pred);
-					_Last = _Mid.first;
-					}
-				}
+		```cpp 
+		#define Max(a, b) ( (a > b) ? a : b )
+		#define Min(a, b) ( (a < b) ? a : b )
 
-			if (_ISORT_MAX < _Count)
-				{	// heap sort if too many divisions
-				_Make_heap_unchecked(_First, _Last, _Pred);
-				_Sort_heap_unchecked(_First, _Last, _Pred);
-				}
-			else if (2 <= _Count)
-				_Insertion_sort_unchecked(_First, _Last, _Pred);	// small
+		#define RANDOM_INIT()	srand(time(NULL))
+		#define RANDOM(L, R)	(L + rand() % ((R) - (L) + 1)) // gen a random integer in [L, R]
+
+		
+		/**
+		* swap 2-element, orignal value 
+		*/
+		template<typename T>
+			static inline void swap(T &x, T &y)
+			{
+				T _t(x);
+				x = y;
+				y = _t;
 			}
 
+			 
+		/**
+		* the quick-sort partition routine
+		*/
+		template<typename T>
+			static int partition_(T list[],int begin, int end) {
+				int pivot_idx = RANDOM(begin,end);
+				T pivot = list[pivot_idx];
+				swap(list[begin], list[pivot_idx]);
+
+				int i = begin + 1;
+				int j = end;
+
+				while(i <= j) {
+					while((i <= end) && (list[i] <= pivot))
+						i++;
+					while((j >= begin) && (list[j] > pivot))
+						j--;
+					if(i < j)
+						swap(list[i],list[j]);
+				}
+
+				swap(list[begin],list[j]);
+				return j; // final pivot position
+			}
+
+		/**
+		* quick sort an array of range [begin, end]
+		*/
+		template<typename T>
+			static void quicksort(T list[],int begin,int end) {
+				if( begin < end) {
+					int pivot_idx = partition_<T>(list, begin, end);
+					quicksort(list, begin, pivot_idx-1);
+					quicksort(list, pivot_idx+1, end);
+				}
+			} 
 		```
+
+		## [REF: 对partition的优化](https://blog.csdn.net/ltyqljhwcm/article/details/53010800)
 
 - Selection Sorts
 
