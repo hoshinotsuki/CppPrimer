@@ -58,9 +58,8 @@ long long       is 8bytes.
 float           is 4bytes.
 double          is 8bytes.
 long double     is 8bytes.
-
-
 ```
+
 ### 运算符优先级
 Q:
 ```CPP
