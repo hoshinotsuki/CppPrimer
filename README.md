@@ -12,6 +12,7 @@
 - [inline](https://github.com/hoshinotsuki/CppPrimer/blob/master/Inline.md) | [png](https://github.com/hoshinotsuki/CppPrimer/blob/master/Inline.png) | 19.3.7 | 
 - [const](https://github.com/hoshinotsuki/CppPrimer/blob/master/const.md) | [png](https://github.com/hoshinotsuki/CppPrimer/blob/master/const.png) | 19.2.26 |
 - [类外的static](https://github.com/hoshinotsuki/CppPrimer/blob/master/stack&heap.md) | 18.8.4 |
+- [pointer to function](https://github.com/hoshinotsuki/CppPrimer/blob/master/Pointer declaration.md)| 19.3.12 |Initialized & Implicit Conversion,  Dereferencing, the lvalue identifying the pointed-to function,overload
 
 ### 表达式
 - [运算符优先级](https://github.com/hoshinotsuki/CppPrimer/blob/master/Operator.md) | 19.3.9 | 
@@ -26,12 +27,12 @@
 
 - [类定义中的static](https://github.com/hoshinotsuki/CppPrimer/blob/master/static.md) | 19.3.8 |
 
-- [class/struct型 存储对齐规则 ](https://github.com/hoshinotsuki/CppPrimer/blob/master/sizeof(struct).md) | 19.3.12 | 
+- [class/struct型 存储对齐规则](https://github.com/hoshinotsuki/CppPrimer/blob/master/sizeof(struct).md) | 19.3.12 | 1.struct内每个成员相对struct首地址的offset，都是该成员大小的整数倍；2.struct变量的首地址是内部最大成员的倍数;3.sizeof(struct)为struct最宽基本类型成员大小的整数倍。
 
 ## 2. 头文件
 
 ## 3. 具名要求
-
+- [C++具名要求](https://github.com/hoshinotsuki/CppPrimer/blob/master/Cpp_named_requirements.md) | 19.3.12 |  keyword: FunctionObject, Predicate, BinaryPredicate, Compare |
 ## 4. 语言支持库
 
 ## 5. 通用工具库
@@ -39,12 +40,14 @@
 ## 6. 字符串库
 
 ## 7. 容器库
+- [std::priority_queue](https://github.com/hoshinotsuki/CppPrimer/blob/master/priority_queue.md) | 19.3.12 | **Container adaptors**
 
 ## 8. 迭代器库
 
 ## 9. 算法库
-- [Sort](https://github.com/hoshinotsuki/CppPrimer/blob/master/Sort.md) | 19.3.8 |
-- [Quicksort](https://github.com/hoshinotsuki/CppPrimer/blob/master/quickSort.md) | 19.3.11 | keyword: in-place partition / one-way / two-way/O(n) 不需要额外空间 | 
+- [排序算法的总结](https://github.com/hoshinotsuki/CppPrimer/blob/master/Sort.md) | 19.3.8 | 
+- [std::sort](https://github.com/hoshinotsuki/CppPrimer/blob/master/quickSort.md) | 19.3.11 | keyword: quicksort/in-place partition/one-way/two-way/O(n) 不需要额外空间 | 
+- [std::sort_heap](https://github.com/hoshinotsuki/CppPrimer/blob/master/sort_heap.md) | 19.3.12 | 用stl的优先队列和红黑树multiset实现。一个implements a max-heap的例子。
 ## 10. 数值库
 
 ## 11. IO库 
