@@ -12,7 +12,7 @@
 - [inline](https://github.com/hoshinotsuki/CppPrimer/blob/master/Inline.md) | [png](https://github.com/hoshinotsuki/CppPrimer/blob/master/Inline.png) | 19.3.7 | 
 - [const](https://github.com/hoshinotsuki/CppPrimer/blob/master/const.md) | [png](https://github.com/hoshinotsuki/CppPrimer/blob/master/const.png) | 19.2.26 |
 - [类外的static](https://github.com/hoshinotsuki/CppPrimer/blob/master/stack&heap.md) | 18.8.4 |
-- [pointer to function](https://github.com/hoshinotsuki/CppPrimer/blob/master/Pointer declaration.md)| 19.3.12 |Initialized & Implicit Conversion,  Dereferencing, the lvalue identifying the pointed-to function,overload
+- [pointer to function](https://github.com/hoshinotsuki/CppPrimer/blob/master/Pointer%20declaration.md)| 19.3.12 |Initialized & Implicit Conversion,  Dereferencing, the lvalue identifying the pointed-to function,overload
 
 ### 表达式
 - [运算符优先级](https://github.com/hoshinotsuki/CppPrimer/blob/master/Operator.md) | 19.3.9 | 
