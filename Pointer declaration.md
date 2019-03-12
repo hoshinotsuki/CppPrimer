@@ -50,3 +50,9 @@ int main()
 }
 ```
 Equality comparison operators are defined for pointers to functions (they compare equal if pointing to the same function). 
+
+
+
+@Lightmare
+
+19/3/12
