@@ -26,6 +26,8 @@
 
 - [类定义中的static](https://github.com/hoshinotsuki/CppPrimer/blob/master/static.md) | 19.3.8 |
 
+- [class/struct型 存储对齐规则 ](https://github.com/hoshinotsuki/CppPrimer/blob/master/sizeof(struct).md) | 19.3.12 | 
+
 ## 2. 头文件
 
 ## 3. 具名要求
@@ -42,7 +44,7 @@
 
 ## 9. 算法库
 - [Sort](https://github.com/hoshinotsuki/CppPrimer/blob/master/Sort.md) | 19.3.8 |
-- [Quicksort](https://github.com/hoshinotsuki/CppPrimer/blob/master/quickSort.md) | 19.3.11 |
+- [Quicksort](https://github.com/hoshinotsuki/CppPrimer/blob/master/quickSort.md) | 19.3.11 | keyword: in-place partition / one-way / two-way/O(n) 不需要额外空间 | 
 ## 10. 数值库
 
 ## 11. IO库 
@@ -61,8 +63,8 @@
 
 
 # 刷题笔记
-- [C/C++](https://github.com/hoshinotsuki/CppPrimer/blob/master/Exersice.md) | 19.3.9 |
+- [C/C++](https://github.com/hoshinotsuki/CppPrimer/blob/master/Exersice.md) | 19.3.12 |
 
-- [leetcode](https://github.com/hoshinotsuki/leetcodeSolution)  | 19.3.3 |
+- [leetcode](https://github.com/hoshinotsuki/leetcodeSolution)  | 19.3.12 |
 
 - [面试真题](https://github.com/hoshinotsuki/CppPrimer/blob/master/%E7%9C%9F%E9%A2%98.md)  | 19.3.9 |
