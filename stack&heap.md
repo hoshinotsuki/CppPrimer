@@ -32,7 +32,7 @@ Complex c3(1,2);//global/static
   - 局部对象 c1 的内存来自stack，生命周期在scope结束时结束，所以又称auto object，因为会被自动清理。
 - heap / new型 动态分配：
   - 动态分配的临时对象Complex(3) ，占用空间来自heap。指针p指向这个临时对象，p的生命在它被delete的时候结束。如果当作用域结束，p指的堆对象依然存在，但是p的生命结束了，作用域外再也没有p，无法delete p，会导致内存泄漏leak。 
-- static 对象：程序结束，自动销毁
+- static 对象：在内存中。程序结束，自动销毁
   - local static  object。 c2 。在函数第一次调用时构造初始化。在程序结束之后自动析构。
   - non-local static  object
     - global object。c3。main调用之前被构造初始化。在程序结束之后自动析构。
