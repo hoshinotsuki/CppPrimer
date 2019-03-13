@@ -1,5 +1,18 @@
 # Heapsort
 ## using priority_queue
+### max-heap(default)
+```cpp
+class Solution {
+public:
+    int findKthLargest(vector<int>& nums, int k) {
+        priority_queue<int> pq(nums.begin(), nums.end());
+        for (int i = 0; i < k - 1; i++) {
+            pq.pop();//将堆顶元素删除k-1次。
+        }
+        return pq.top();
+    }
+};
+```
 ### min-heap  
 ```cpp
 class Solution {
@@ -16,21 +29,8 @@ public:
     }
 };
 ```
-### max-heap
-```cpp
-class Solution {
-public:
-    int findKthLargest(vector<int>& nums, int k) {
-        priority_queue<int> pq(nums.begin(), nums.end());
-        for (int i = 0; i < k - 1; i++) {
-            pq.pop();//将堆顶元素删除k-1次。
-        }
-        return pq.top();
-    }
-};
-```
 ## using multiset(rbt)
-### min-heap
+### min-heap(default)
 ```cpp
 class Solution {
 public:
@@ -39,10 +39,10 @@ public:
         for (int num : nums) {
             mset.insert(num);
             if (mset.size() > k) {
-                mset.erase(mset.begin());
+                mset.erase(mset.begin());//multiset没有pop()，只能用erase(it);
             }
         }
-        return *mset.begin();
+        return *mset.begin();//multiset也没有top()，他是
     }
 };
 ```
@@ -93,7 +93,7 @@ private:
         }
         if (largest != i) {
             swap(nums[i], nums[largest]);
-            maxHeapify(nums, largest);
+            maxHeapify(nums, largest);//递归
         }
     }
     
@@ -110,4 +110,12 @@ private:
 
 @Lightmare
 
-19/3/12
+12/3/19
+
+
+
+[最大堆（创建、删除、插入和堆排序）](https://wangwangok.github.io/2017/05/09/data_struct_max_heap/)
+
+@Lightmare
+
+13/3/19
