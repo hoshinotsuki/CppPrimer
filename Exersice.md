@@ -1,6 +1,31 @@
+# 0. 编译
+Q:
+```cpp
+引用标准库，下面的说法哪些是正确的？
+正确答案: B   你的答案: B (正确)
+A.语句#include "stdio. h" 是正确的，而且程序编译的速度比#include<stdio. h>要快
+B.语句#include <stdio. h>是正确的，而且程序编译的速度比#include"stdio. h"要快
+C.语句#include "stdio. h"和#include <stdio. h>都是正确的，程序编译速度没有区别
+D.语句#include "stdio. h"是错误的
+```
+A:
+```cpp
+通过<>，（库里）一步就找到了
+通过“”， 由于先从当前目录中找（未找到），再到库中寻找（找到），比前者多了一步，所以花费时间比前者多
+```
+
 # 1. C++基础
+
 ## 表达式
 ### sizeof
+Q:
+```CPP
+
+```
+A:
+```CPP
+
+```
 Q：
 ```cpp
 win32系统里，下面几个sizeof的运行结果是（）
@@ -45,7 +70,7 @@ sizeof data;//同sizeof(className)
 sizeof *p;//同sizeof(className)
 sizeof p;//指针大小,4
 
-4.ex4_28:输出每种空间内置类型大小
+4.ex4_28:输出每种空间内置类型大小（32位）
 bool            is 1bytes.
 char            is 1bytes.
 wchar_t         is 2bytes.
@@ -59,6 +84,7 @@ float           is 4bytes.
 double          is 8bytes.
 long double     is 8bytes.
 ```
+
 
 ### 运算符优先级
 Q:
@@ -82,9 +108,31 @@ sizeof p->mem[i]  // sizeof(p->mem[i])
 sizeof a < b      // sizeof(a) < b
 sizeof f()        // 如果F返回空，则无定义。否则返回返回指的类型所占大小。
 
+2.[]高于*,[]从左往右，*从右往左
+int *c[4];//16。4个（int*)类型的数组=16
+int(*d)[4];//4。指向4个int型的数组的指针=4
 ```
 
-
+## 转型
+Q:
+```CPP
+#include <stdio.h>
+int main(void)
+{
+    unsigned int a = 1;
+    signed int b = -3;
+    int c;
+    (a+b>0)?(c=1):(c=0);
+    printf("%d",c);
+    return 0;
+}
+正确答案: 1   你的答案: 0 (错误) 
+```
+A:
+```CPP
+unsigned int + int = unsigned int + [unsigned int]
+int 会转换为 unsigned int 
+```
 ## 字符串、向量、数组
 ### 字符串
 
@@ -173,9 +221,50 @@ const double *p  = &dval;//正确。p所指对象是常量。不能通过p改变
 ②const指针
 int num = 0;
 int *const p = &num;//p是常量。类型是指针。p一直指向num
-
-
 ```
+### storage_duration
+- static 静态或线程存储期和内部链接。内存中只存在一个。
+- extern 静态或线程存储期和内部链接。外部变量，可以供所有源文件使用
+- thread_local 线程存储期。
+- mutable 不影响存储期或链接。
+- register (c++17弃用) 放在寄存器中，而非内存中， 效率更高，一般是临时变量
+- auto (c++11前) 默认都是自动变量 
+```cpp
+#include <iostream>
+#include <string>
+#include <thread>
+#include <mutex>
+ 
+thread_local unsigned int rage = 1; 
+std::mutex cout_mutex;//a synchronization primitive that can be used to protect shared data from being simultaneously accessed by multiple threads.
+ 
+void increase_rage(const std::string& thread_name)
+{
+    ++rage; // 在锁外修改 OK ；这是线程局域变量
+    std::lock_guard<std::mutex> lock(cout_mutex);
+    std::cout << "Rage counter for " << thread_name << ": " << rage << '\n';
+}
+ 
+int main()
+{
+    std::thread a(increase_rage, "a"), b(increase_rage, "b");
+ 
+    {
+        std::lock_guard<std::mutex> lock(cout_mutex);
+        std::cout << "Rage counter for main: " << rage << '\n';
+    }
+ 
+    a.join();
+    b.join();
+}
+```
+output
+```cpp
+Rage counter for a: 2
+Rage counter for main: 1
+Rage counter for b: 2
+```
+
 # 2. C++标准库
 ### IO库
 Q:
@@ -267,7 +356,8 @@ int main()
 
 # 3. 类设计者的工具
 ### 重载 
-Q:
+#### 普通函数的重载
+Q1:
 ```cpp
 下列对重载函数的描述中，_____A_______是错误的。
 A.重载函数中不允许使用默认参数.
@@ -275,7 +365,7 @@ B.重载函数中编译时根据参数表进行选择
 C.构造函数重载将会给初始化带来多种方式
 D.不要使用重载函数来描述毫无相干的函数
 ```
-A:
+A1:
 ```CPP
 一般情况下，在函数调用时形参从实参那里取得值，因此实参的个数应于形参相同。
 有时多次调用同样的实参，c++提供简单的处理办法，给实参一个默认值，这样形参就不必从实参取值了。
@@ -283,42 +373,237 @@ A:
 如果在调用此函数时，确认r的值为6.5，则可以不必给出实参的值，如： area( )；  //相当于area（6.5）；
 如果不想使形参取默认值，则通过实参另行给出。如：area(7.5)。
 ```
-Q:
+Q2:
 ```CPP
+以下不是double compare(int,int)的重载函数的是()
+正确答案: D   你的答案: D (正确)
+int compare(double,double)
+double compare(double,double)
+double compare(double,int)
+int compare(int,int)
 ```
-A:
+A2:
 ```CPP
+重载函数与类型无关，所以不看类型。
+- 成员函数被重载的特征：
+    1. 相同的范围（在同一个类中）；
+    2. 函数名字相同；
+    3. 参数不同；
+    4. virtual 关键字可有可无。
+- 覆盖是指派生类函数覆盖基类函数，特征是：
+    1. 不同的范围（分别位于派生类与基类）；
+    2. 函数名字相同；
+    3. 参数相同；
+    4. 基类函数必须有 virtual 关键字。
+- 隐藏是指派生类的函数屏蔽了与其同名的基类函数，规则如下：
+    1. 如果派生类的函数与基类的函数同名，但是参数不同。此时，不论有无 virtual 关键字，基类的函数将被隐藏（注意别与重载混淆）。
+    2. 如果派生类的函数与基类的函数同名，并且参数也相同，但是基类函数没有 virtual 关键字。此时，基类的函数被隐藏（注意别与覆盖混淆）。
+```
+
+#### 运算符重载
+Q:
+
+```CPP
+有关运算符重载正确的描述是（D）
+正确答案: D   你的答案: A (错误)
+c++语言允许在重载运算符时改变运算符的操作个数
+c++语言允许在重载运算符时改变运算符的优先级
+c++语言允许在重载运算符时改变运算符的结合性
+c++语言允许在重载运算符时改变运算符原来的功能
+```
+
+A:
+
+```CPP
+c ++语言允许在重载运算符时改变运算符原来的功能。例如将“ + + "符号重载时，可以定义为“--"的功能。但是，不提倡这样做，重载运算符最好仍保持原有的功能。
+与普通函数的重载规则不同，这里的对象是运算符（运算符重载是特殊的函数重载），运算符重载有自己的规则，不要混为一谈。
 ```
 
 Q:
+
 ```CPP
+
 ```
 A:
 ```CPP
+
 ```
 Q:
 ```CPP
+
 ```
 A:
 ```CPP
+
+```
+
+### 动态绑定
+
+#### 纯虚函数
+
+Q1:
+
+```CPP
+关于纯虚函数，下列表述正确的是？（ B  ）
+正确答案: B   你的答案: C (错误)
+A.派生类必须实现基类的纯虚函数
+B.纯虚函数的声明总是以“=0”结束
+C.纯虚函数是给出实现版本（即无函数体定义）的虚函数
+D.含有纯虚函数的类一定是派生类
+```
+A1:
+```cpp
+A.含有纯虚函数的类是抽象类，对于继承抽象类的派生类来说，如果[派生类实现了基类的纯虚函数，则派生类可以实例化]。若派生类没有实现该纯虚函数，则该[派生类也是抽象类]，即不能实例化。
+C.纯虚函数是需要在该类下不实现而[在派生类中实现]的函数。
+D.含有纯虚函数的类一定是[基类]，需要[派生类]来[实现其虚函数的功能]。
+```
+Q2:
+
+```CPP
+如果不使用多态机制，那么通过基类的指针虽然可以指向派生类对象，但是只能访问从基类继承的成员。
+正确答案: A   你的答案: A (正确)
+A.是
+B.否
+```
+
+A2:
+
+```CPP
+若不使用多态机制，则动态绑定不存在。即基类与派生类虚函数无法根据指针指向的对象动态选择。 虚函数就无法使用。
+```
+
+
+
+
+
+Q:
+
+```CPP
+
+```
+A:
+```CPP
+
 ```
 Q:
 ```CPP
+
 ```
 A:
 ```CPP
+
+​```Q:
+
+​```CPP
+
+```
+A:
+```CPP
+
 ```
 Q:
 ```CPP
+
 ```
 A:
 ```CPP
+
+​```Q:
+
+​```CPP
+
+```
+A:
+```CPP
+
 ```
 Q:
 ```CPP
+
 ```
 A:
 ```CPP
+
+​```Q:
+
+​```CPP
+
+```
+A:
+```CPP
+
+```
+Q:
+```CPP
+
+```
+A:
+```CPP
+
+​```Q:
+
+​```CPP
+
+```
+A:
+```CPP
+
+```
+Q:
+```CPP
+
+```
+A:
+```CPP
+
+​```Q:
+
+​```CPP
+
+```
+A:
+```CPP
+
+```
+Q:
+```CPP
+
+```
+A:
+```CPP
+
+​```Q:
+
+​```CPP
+
+```
+A:
+```CPP
+
+```
+Q:
+```CPP
+
+```
+A:
+```CPP
+
+​```Q:
+
+​```CPP
+
+```
+A:
+```CPP
+
+```
+Q:
+```CPP
+
+```
+A:
+```CPP
+
 ```
 
 
