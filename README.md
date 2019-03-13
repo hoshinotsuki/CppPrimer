@@ -27,6 +27,7 @@
 
 - [类定义中的static](https://github.com/hoshinotsuki/CppPrimer/blob/master/static.md) | 19.3.8 |
 
+- [Union](https://github.com/hoshinotsuki/CppPrimer/blob/master/Union.md) | 19.3.13 |[largest data] member, implementation-defined, Member allocating, Conctors and Dectors of members, Member lifetime, Anonymous unions, Union-like classes
 - [class/struct型 存储对齐规则](https://github.com/hoshinotsuki/CppPrimer/blob/master/sizeof(struct).md) | 19.3.12 | 1.struct内每个成员相对struct首地址的offset，都是该成员大小的整数倍；2.struct变量的首地址是内部最大成员的倍数;3.sizeof(struct)为struct最宽基本类型成员大小的整数倍。
 
 ## 2. 头文件
@@ -66,8 +67,11 @@
 
 
 # 刷题笔记
-- [C/C++](https://github.com/hoshinotsuki/CppPrimer/blob/master/Exersice.md) | 19.3.12 |
+- [C/C++基础](https://github.com/hoshinotsuki/CppPrimer/blob/master/Exersice.md) | 19.3.13 |
 
-- [leetcode](https://github.com/hoshinotsuki/leetcodeSolution)  | 19.3.12 |
+- [操作系统](https://github.com/hoshinotsuki/CppPrimer/blob/master/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.md) | 19.3.13 |
+
+- [leetcode](https://github.com/hoshinotsuki/leetcodeSolution)  | 19.3.13 |
 
 - [面试真题](https://github.com/hoshinotsuki/CppPrimer/blob/master/%E7%9C%9F%E9%A2%98.md)  | 19.3.9 |
+
