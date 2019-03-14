@@ -41,7 +41,9 @@
 ## 6. 字符串库
 
 ## 7. 容器库
-- [std::priority_queue](https://github.com/hoshinotsuki/CppPrimer/blob/master/priority_queue.md) | 19.3.12 | **Container adaptors**
+
+#### Container adaptors
+- [std::priority_queue](https://github.com/hoshinotsuki/CppPrimer/blob/master/Algorithm/priority_queue.md) | 19.3.12 |
 
 ## 8. 迭代器库
 
@@ -50,8 +52,9 @@
 #### Modifying sequence operations
 #### Partitioning operations
 #### Sorting operations
-- [排序算法的总结](https://github.com/hoshinotsuki/CppPrimer/blob/master/Sort.md) | 19.3.8 | 
+- [排序算法的总结](https://github.com/hoshinotsuki/CppPrimer/blob/master/Algorithm/Sort.md) | 19.3.8 | 
 - [std::sort](https://github.com/hoshinotsuki/CppPrimer/blob/master/quickSort.md) | 19.3.11 | keyword: quicksort/in-place partition/one-way/two-way/O(n) 不需要额外空间  
+- [std::nth_element](https://github.com/hoshinotsuki/CppPrimer/blob/master/Algorithm/nth_element.md) | 19.3.14 |
 #### Binary search operations (on sorted ranges)
 #### Other operations on sorted ranges
 #### Set operations (on sorted ranges)
