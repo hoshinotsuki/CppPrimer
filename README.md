@@ -45,10 +45,25 @@
 
 ## 8. 迭代器库
 
-## 9. 算法库
+## 9. Algorithms library
+#### Non-modifying sequence operations
+#### Modifying sequence operations
+#### Partitioning operations
+#### Sorting operations
 - [排序算法的总结](https://github.com/hoshinotsuki/CppPrimer/blob/master/Sort.md) | 19.3.8 | 
-- [std::sort](https://github.com/hoshinotsuki/CppPrimer/blob/master/quickSort.md) | 19.3.11 | keyword: quicksort/in-place partition/one-way/two-way/O(n) 不需要额外空间 | 
+- [std::sort](https://github.com/hoshinotsuki/CppPrimer/blob/master/quickSort.md) | 19.3.11 | keyword: quicksort/in-place partition/one-way/two-way/O(n) 不需要额外空间  
+#### Binary search operations (on sorted ranges)
+#### Other operations on sorted ranges
+#### Set operations (on sorted ranges)
+#### Heap operations
 - [std::sort_heap](https://github.com/hoshinotsuki/CppPrimer/blob/master/sort_heap.md) | 19.3.12 | 用stl的优先队列和红黑树multiset实现。一个implements a max-heap的例子。
+#### Minimum/maximum operations
+#### Comparison operations
+#### Permutation operations
+#### Numeric operations
+- iota[c++11]
+#### Operations on uninitialized memory
+#### C library [Defined in header <cstdlib>]
 ## 10. 数值库
 
 ## 11. IO库 

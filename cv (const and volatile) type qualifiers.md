@@ -1,5 +1,8 @@
-# const
+# cv (const and volatile) type qualifiers
+- const - defines that the type is constant.
+- volatile - defines that the type is volatile.
 
+## const
 ```cpp
 class complex
 {
@@ -20,15 +23,15 @@ private:
 };
 ```
 
-1.只有member fun后面可以用 const定义。成员变量后面不可以写const，写在前面。
+- 只有member fun后面可以用 const定义。成员变量后面不可以写const，写在前面。
 
-2.const obj 如果调用 non-const member fun会编译出错。
+- const obj 如果调用 non-const member fun会编译出错。
 
 ![img](https://img-blog.csdnimg.cn/20190226193028398.png)![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
 
 错误：如果定义时没有写成void print() const{}; 就会报错。因为str是const-obj，不能用non-const member fun调用。 ![img](https://img-blog.csdnimg.cn/20190226193355101.png)![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
 
-3.例子：STD里的操作符重载
+### 例子：STD里的操作符重载
 
 来自 TEMPLATE CLASS basic_string的定义。string类的operator[]。
 
@@ -55,7 +58,9 @@ const_reference operator[](size_type _Off) const
 - **C++规定：如果类中有成员函数的const fun 和nonconst fun同时存在，则const obj默认调用const fun，non-const obj默认调用non-const fun。**
 - **C++规定：non-const fun（obj可变）可以调用const fun（obj不可变）。 反过来报错。**
 
-4.例子：《cpp primer》15节 -基类的定义
+----
+
+### 例子：《cpp primer》15节 -基类的定义
 
 ```cpp
 class Quote {
@@ -122,4 +127,31 @@ protected:
 };
 ```
 
-![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==)
+## mutable
+
+May appear in the declaration of a [non-static [class members] of non-reference non-const] type:
+
+```cpp
+class X {
+  mutable const int* p;         // OK
+  mutable int* const q;         // ill-formed
+};
+```
+
+Mutable is used to specify that the member does not affect the externally visible state of the class (as often used for [mutexes, memo caches, lazy evaluation, and access instrumentation]).
+
+```cpp
+class ThreadsafeCounter {
+  mutable std::mutex m; // The "M&M rule": mutable and mutex go together
+  int data = 0;
+ public:
+  int get() const {
+    std::lock_guard<std::mutex> lk(m);
+    return data;
+  }
+  void inc() {
+    std::lock_guard<std::mutex> lk(m);
+    ++data;
+  }
+};
+```
