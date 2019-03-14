@@ -57,6 +57,7 @@
 #### Set operations (on sorted ranges)
 #### Heap operations
 - [std::sort_heap](https://github.com/hoshinotsuki/CppPrimer/blob/master/Algorithm/sort_heap.md) | 19.3.12 | 用stl的优先队列和红黑树multiset实现。一个implements a max-heap的例子。
+- [std::push_heap](https://github.com/hoshinotsuki/CppPrimer/blob/master/Algorithm/push_heap.md) | 19.3.14 |
 #### Minimum/maximum operations
 #### Comparison operations
 #### Permutation operations
